@@ -5,19 +5,21 @@
 # Copyright The Buildx Authors.
 # Licensed under the Apache License, Version 2.0
 
-ARG GO_VERSION="1.21.3"
+ARG GO_VERSION="1.21"
 ARG PROTOC_VERSION="3.11.4"
 
 # protoc is dynamically linked to glibc so can't use alpine base
-FROM golang:${GO_VERSION}-bookworm AS base
+FROM cr.loongnix.cn/library/golang:${GO_VERSION}-buster AS base
 RUN apt-get update && apt-get --no-install-recommends install -y git unzip
 ARG PROTOC_VERSION
 ARG TARGETOS
 ARG TARGETARCH
 RUN <<EOT
   set -e
-  arch=$(echo $TARGETARCH | sed -e s/amd64/x86_64/ -e s/arm64/aarch_64/)
-  wget -q https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-${TARGETOS}-${arch}.zip
+  #arch=$(echo $TARGETARCH | sed -e s/amd64/x86_64/ -e s/arm64/aarch_64/)
+  arch=$(echo $TARGETARCH)
+  #wget -q https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-${TARGETOS}-${arch}.zip
+  
   unzip protoc-${PROTOC_VERSION}-${TARGETOS}-${arch}.zip -d /usr/local
 EOT
 WORKDIR /go/src/github.com/docker/buildx

@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM alpine:3.14 AS gen
+FROM cr.loongnix.cn/library/alpine:3.11 AS gen
 RUN apk add --no-cache git
 WORKDIR /src
 RUN --mount=type=bind,target=. <<EOT

@@ -131,6 +131,7 @@ target "binaries-cross" {
     "linux/ppc64le",
     "linux/riscv64",
     "linux/s390x",
+    "linux/loongarch64",
     "windows/amd64",
     "windows/arm64"
   ]
