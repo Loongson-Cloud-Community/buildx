@@ -1,7 +1,7 @@
 package bkimage
 
 const (
-	DefaultImage         = "moby/buildkit:buildx-stable-1" // TODO: make this verified
-	QemuImage            = "tonistiigi/binfmt:latest"      // TODO: make this verified
+	DefaultImage         = "cr.loongnix.cn/library/buildkit:latest" // TODO: make this verified
+	QemuImage            = "cr.loongnix.cn/tonistiigi/binfmt:latest"      // TODO: make this verified
 	DefaultRootlessImage = DefaultImage + "-rootless"
 )
